@@ -30,8 +30,8 @@ public class DVDSearchApp extends JFrame {
             use.printStackTrace();
             System.exit(-1);
         }
-        System.out.println(mainClass.getPath());
-        final String mainDir = mainClass.getPath().substring(0, mainClass.getPath().indexOf("build"));    
+//        System.out.println(mainClass.getPath());
+//        final String mainDir = mainClass.getPath().substring(0, mainClass.getPath().indexOf("build"));    
         setTitle("DVD Search App");
         setLayout(null);
         
@@ -46,7 +46,8 @@ public class DVDSearchApp extends JFrame {
         scrollResults.setBounds(30, 85, 290, 150);
         
         try {
-            FileInputStream fileInputStream = new FileInputStream(new File(mainDir + "\\TITLES.xls"));
+            File app = new File(mainClass.getPath());
+            FileInputStream fileInputStream = new FileInputStream(new File(app.getParent() + "\\TITLES.xls"));
             HSSFWorkbook workbook = new HSSFWorkbook(fileInputStream);
             HSSFSheet worksheet = workbook.getSheet("Sheet1");
             
